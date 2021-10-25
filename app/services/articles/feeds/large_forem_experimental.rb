@@ -66,6 +66,8 @@ module Articles
       end
 
       def score_followed_organization(article, followed_org_score: 1, not_followed_org_score: 0)
+        return not_followed_org_score unless article.organization_id?
+
         user_following_org_ids.include?(article.organization_id) ? followed_org_score : not_followed_org_score
       end
 
